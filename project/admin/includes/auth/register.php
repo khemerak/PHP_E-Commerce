@@ -1,3 +1,19 @@
+<?php 
+include("../../../db/connection.php");
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $country = $_POST['country'];
+
+    $sql = "INSERT INTO users (username, email, password, country) VALUES (:username, :email, :password, :country)";
+    $stmt = $pdoConnection->prepare($sql);
+    $stmt->execute(['username' => $username, 'email' => $email, 'password' => password_hash($password, PASSWORD_DEFAULT), 'country' => $country]);
+    header("Location: ../../admin/auth/login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +48,7 @@
                 </div>
                 <h4>New here?</h4>
                 <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
-                <form class="pt-3">
+                <form class="pt-3" method="POST">
                   <div class="form-group">
                     <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Username">
                   </div>
