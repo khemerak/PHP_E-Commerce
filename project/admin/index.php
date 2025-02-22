@@ -1,10 +1,10 @@
 <?php
-session_start();
+// session_start();
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
-  header("Location: includes/auth/login.php");
-  exit();
-}
+// if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
+//   header("Location: includes/auth/login.php");
+//   exit();
+// }
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
 <body>
   <div class="container-scroller">
     <!-- partial:partials/navbar -->
-     hhjh
     <?php include "includes/layout/navbar.php"; ?>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
@@ -27,12 +26,11 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
   </div>
   <?php include "includes/script.php" ?>
 </body>
-
 </html>
 <?php
-session_start();
-session_unset();
-session_destroy();
-header('Location: includes/auth/login.php');
-exit;
+// session_start();
+// session_unset();
+// session_destroy();
+// header('Location: includes/auth/login.php');
+// exit;
 ?>
