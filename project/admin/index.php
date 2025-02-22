@@ -14,6 +14,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
 <body>
   <div class="container-scroller">
     <!-- partial:partials/navbar -->
+     hhjh
     <?php include "includes/layout/navbar.php"; ?>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
