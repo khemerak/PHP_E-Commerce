@@ -1,10 +1,6 @@
 <?php
-session_start();
+// session_start();
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
-  header("Location: auth/login.php");
-  exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +22,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
   </div>
   <?php include "includes/script.php" ?>
 </body>
-
 </html>
 <?php
 session_start();
