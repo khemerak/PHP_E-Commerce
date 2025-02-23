@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
-  header("Location: includes/auth/login.php");
+  header("Location: auth/login.php");
   exit();
 }
 ?>
@@ -32,6 +32,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
 session_start();
 session_unset();
 session_destroy();
-header('Location: includes/auth/login.php');
+header('Location: auth/login.php');
 exit;
 ?>
