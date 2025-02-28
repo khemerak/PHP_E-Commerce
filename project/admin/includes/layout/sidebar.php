@@ -1,3 +1,6 @@
+<?php 
+    
+?>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item nav-profile">
@@ -21,25 +24,25 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="index.php?p=slideshows">
                 <span class="menu-title">Slideshows</span>
                 <i class="mdi mdi-application menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="index.php?p=products">
                 <span class="menu-title">Products</span>
                 <i class="mdi mdi-package menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="index.php?p=users">
                 <span class="menu-title">Users</span>
                 <i class="mdi mdi-account menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="index.php?p=settings">
                 <span class="menu-title">Settings</span>
                 <i class="mdi mdi-cog menu-icon"></i>
             </a>
