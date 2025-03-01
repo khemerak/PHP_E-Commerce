@@ -1,23 +1,25 @@
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Valera | Admin</title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="./assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="./assets/vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="./assets/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="./assets/vendors/font-awesome/css/font-awesome.min.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="./assets/vendors/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="./assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- End layout styles -->
-    <link rel="shortcut icon" href="./assets/assets/images/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/tailwind.output.css" />
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <script src="./assets/js/init-alpine.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+      defer
+    ></script>
+    <script src="./assets/js/charts-lines.js" defer></script>
+    <script src="./assets/js/charts-pie.js" defer></script>
 </head>
