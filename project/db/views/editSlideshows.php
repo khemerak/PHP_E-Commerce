@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../Slideshows.php';
+$upload = __DIR__ .'/../../admin/uploads';
 $slideshows = new Slideshows();
 $id = $_GET['id'];
 $slide = $slideshows->findById($id);
@@ -7,11 +8,11 @@ $slide = $slideshows->findById($id);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $image_path = $slide['image_path'];
     if ($_FILES['image']['name']) {
-        $image_path = 'uploads/' . $_FILES['image']['name'];
+        $image_path = $upload . $_FILES['image']['name'];
         move_uploaded_file($_FILES['image']['tmp_name'], $image_path);
     }
     $slideshows->updateSlideshow($id, $image_path, $_POST['caption'], $_POST['slide_order']);
-    header('Location: index.php');
+    echo "<script>window.location.href = '?p=slideshows';</script>";
     exit;
 }
 ?>

@@ -1,17 +1,14 @@
 
 <div class="container px-6 mx-auto grid">
-    <!-- Header -->
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
         Manage Categories
     </h2>
-    <!-- Add New Category Button -->
     <div class="mb-4">
         <a href="add_category.php"
            class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
             Add New Category
         </a>
     </div>
-    <!-- Categories Table -->
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
             <table class="w-full whitespace-no-wrap">
@@ -26,7 +23,6 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    <!-- Example Row 1: Top-Level Category -->
                     <tr class="text-gray-700 dark:text-gray-400">
                         <td class="px-4 py-3 text-sm">1</td>
                         <td class="px-4 py-3 text-sm">Electronics</td>
@@ -38,20 +34,6 @@
                         <td class="px-4 py-3 text-sm">
                             <a href="edit_category.php?id=1" class="text-blue-600 hover:underline">Edit</a>
                             <a href="delete_category.php?id=1" class="text-red-600 hover:underline ml-2">Delete</a>
-                        </td>
-                    </tr>
-                    <!-- Example Row 2: Subcategory -->
-                    <tr class="text-gray-700 dark:text-gray-400">
-                        <td class="px-4 py-3 text-sm">2</td>
-                        <td class="px-4 py-3 text-sm">Smartphones</td>
-                        <td class="px-4 py-3 text-sm">Mobile phones with advanced features</td>
-                        <td class="px-4 py-3 text-sm">Electronics</td>
-                        <td class="px-4 py-3 text-sm">
-                            <img src="path/to/smartphones.jpg" alt="Smartphones" class="w-10 h-10 object-cover">
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                            <a href="edit_category.php?id=2" class="text-blue-600 hover:underline">Edit</a>
-                            <a href="delete_category.php?id=2" class="text-red-600 hover:underline ml-2">Delete</a>
                         </td>
                     </tr>
                 </tbody>

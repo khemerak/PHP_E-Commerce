@@ -47,8 +47,8 @@ $totalPages = ceil($totalSlides / $limit);
                             </div>
                         </td>
                         <td class="px-4 py-3 text-sm">
-                            <a href="?p=edit&id=<?php echo $slide['id']; ?>" class="text-blue-600 hover:underline">Edit</a>
-                            <a href="?p=delete&id=<?php echo $slide['id']; ?>" class="text-red-600 hover:underline ml-2" onclick="return confirm('Are you sure?')">Delete</a>
+                            <a href="?p=edit&id=<?php htmlspecialchars($slide['id'])?>" class="text-blue-600 hover:underline">Edit</a>
+                            <a href="?p=delete&id=<?php  htmlspecialchars($slide['id']) ?>" class="text-red-600 hover:underline ml-2" onclick="return confirm('Are you sure?')">Delete</a>
                         </td>
                     </tr>
                     <tr class="text-gray-700 dark:text-gray-400">

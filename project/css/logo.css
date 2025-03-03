@@ -1,0 +1,37 @@
+.header__logo {
+    padding: 20px;
+    background-color: #ffffff; /* White background */
+    text-align: center;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif; /* Or another bold sans-serif font */
+    font-size: 2.5rem; /* text-2xl equivalent */
+    font-weight: bold;
+    color: #800080; /* Purple text */
+    text-decoration: none; /* Remove underline from link */
+    display: inline-block; /* Ensures proper positioning */
+}
+
+.valera-text {
+    position: relative; /* For positioning the icon */
+}
+
+.bag-icon {
+    display: inline-block;
+    width: 1.5rem; /* Adjust size to match text */
+    height: 1.5rem; /* Adjust size to match text */
+    color: #D4A017; /* Golden-yellow for the icon */
+    /* Use an icon font or SVG here instead of emoji */
+    position: absolute;
+    left: 50%; /* Center horizontally over the "O" */
+    transform: translateX(-50%); /* Center precisely */
+    top: -0.1rem; /* Fine-tune vertical alignment */
+}
+
+/* If using an icon font like Font Awesome: */
+.bag-icon::before {
+    content: "\f290"; /* Example Font Awesome shopping bag icon code */
+    font-family: "Font Awesome 5 Free"; /* Or your icon library */
+    font-weight: 900; /* Bold for solid icons */
+}
