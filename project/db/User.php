@@ -59,7 +59,7 @@ class User extends Base {
     public function searchUsers($searchTerm) {
         $query = "SELECT * FROM {$this->table} WHERE user_id LIKE :search OR username LIKE :search";
         $statements = $this->db->prepare($query);
-        $searchParam = "%" . $searchTerm . "%"; // Allow partial matches
+        $searchParam = "%" . $searchTerm . "%";
         $statements->bindParam(':search', $searchParam);
         $statements->execute();
         return $statements->fetchAll(PDO::FETCH_ASSOC);

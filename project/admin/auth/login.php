@@ -3,11 +3,10 @@ session_start();
 require_once "../../db/db_connections.php";
 require_once "../../db/User.php";
 $userModel = new User();
-$message = '';
+$msg = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
-
     $user = $userModel->findByUsername($username);
     if ($user && password_verify($password, $user['password'])) {
         if ($userModel->checkAdmin($username)) {
@@ -15,10 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: ../index.php");
             exit();
         } else {
-            $message = "You do not have admin privileges.";
+            $msg = "You do not have admin privileges.";
         }
     } else {
-        $message = "Invalid username or password.";
+        $msg = "Invalid username or password.";
     }
 }
 ?>
@@ -47,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
         <div class="w-full">
           <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">Login</h1>
-          <?php if ($message): ?>
-            <p class="text-red-500 text-sm mb-4"><?php echo $message; ?></p>
+          <?php if ($msg): ?>
+            <p class="text-red-500 text-sm mb-4"><?php echo $msg; ?></p>
           <?php endif; ?>
           <form method="POST" action="">
             <label class="block text-sm">
