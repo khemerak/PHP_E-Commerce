@@ -1,53 +1,47 @@
 <?php
 require_once 'base.php';
 
-class Product extends Base {
-    protected $table = "products";
+class Category extends Base {
+    protected $table = "categories";
     
     protected function getPrimaryKey() {
-        return "product_id";
+        return "category_id";
     }
     
-    public function findById($id) {
-        $query = "SELECT * FROM {$this->table} WHERE product_id = :id";
+    public function findByName($name) {
+        $query = "SELECT * FROM {$this->table} WHERE name = :name";
         $statements = $this->db->prepare($query);
-        $statements->bindParam(':id', $id);
+        $statements->bindParam(':name', $name);
         $statements->execute();
         return $statements->fetch(PDO::FETCH_ASSOC);
     }
     
-    public function createProduct($name, $description, $price, $stock_quantity, $image = null) {
+    public function createCategory($name, $description = null) {
         $data = [
             'name' => $name,
             'description' => $description,
-            'price' => $price,
-            'stock_quantity' => $stock_quantity,
-            'image' => $image,
             'created_at' => date('Y-m-d H:i:s')
         ];
         return $this->insert($data);
     }
     
-    public function updateProduct($product_id, $name, $description, $price, $stock_quantity, $image = null) {
+    public function updateCategory($category_id, $name, $description = null) {
         $data = [
             'name' => $name,
             'description' => $description,
-            'price' => $price,
-            'stock_quantity' => $stock_quantity,
-            'image' => $image,
             'updated_at' => date('Y-m-d H:i:s')
         ];
-        return $this->update($product_id, $data);
+        return $this->update($category_id, $data);
     }
     
-    public function deleteProduct($product_id) {
-        $query = "DELETE FROM {$this->table} WHERE product_id = :product_id";
+    public function deleteCategory($category_id) {
+        $query = "DELETE FROM {$this->table} WHERE category_id = :category_id";
         $statements = $this->db->prepare($query);
-        $statements->bindParam(":product_id", $product_id);
+        $statements->bindParam(":category_id", $category_id);
         return $statements->execute();
     }
     
-    public function getProductCount() {
+    public function getCategoryCount() {
         $query = "SELECT COUNT(*) as total FROM {$this->table}";
         $statements = $this->db->prepare($query);
         $statements->execute();
@@ -55,7 +49,7 @@ class Product extends Base {
         return $result['total'];
     }
     
-    public function getAllProducts($limit = null, $offset = null) {
+    public function getAllCategories($limit = null, $offset = null) {
         $query = "SELECT * FROM {$this->table} ORDER BY name ASC";
         if ($limit !== null && $offset !== null) {
             $query .= " LIMIT :limit OFFSET :offset";
@@ -69,7 +63,16 @@ class Product extends Base {
         return $statements->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    public function checkProductExists($name) {
+    public function searchCategories($searchTerm) {
+        $query = "SELECT * FROM {$this->table} WHERE category_id LIKE :search OR name LIKE :search";
+        $statements = $this->db->prepare($query);
+        $searchParam = "%" . $searchTerm . "%";
+        $statements->bindParam(':search', $searchParam);
+        $statements->execute();
+        return $statements->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function checkCategoryExists($name) {
         $query = "SELECT COUNT(*) as count FROM {$this->table} WHERE name = :name";
         $statements = $this->db->prepare($query);
         $statements->bindParam(':name', $name);

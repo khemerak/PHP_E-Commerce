@@ -27,6 +27,15 @@ if (isset($_GET['p'])) {
         case "categories":
             $pages = "pages/categories.php";
             break;
+        case "addCategory":
+            $pages = "../db/views/addCategory.php";
+            break;
+        case "editCategory":
+            $pages = "../db/views/editCategory.php";
+            break;
+        case "deleteCategory":
+            $pages = "../db/views/deleteCategory.php";
+            break;        
         case "users":
             $pages = "pages/users.php";
             break;
