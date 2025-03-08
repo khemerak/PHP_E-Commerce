@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../db/Product.php';
 $productModel = new Product();
 
-$itemsPerPage = 10;
+$itemsPerPage = 20;
 $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
 $offset = ($page - 1) * $itemsPerPage;
 
@@ -14,19 +14,24 @@ $products = $productModel->getAllProducts($itemsPerPage, $offset);
 
 <div class="container px-6 mx-auto grid">
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Manage Products</h2>
-    <div class="mb-4">
-        <a href="add_product.php" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">Add New Product</a>
+    <div class="mb-4 flex justify-between items-center">
+        <div class="flex gap-2">
+            <a href="add_product.php" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">Add New Product</a>
+        </div>
+        <div class="flex items-center">
+            <input type="text" id="searchInput" placeholder="Search by product name..." class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+        </div>
     </div>
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
-            <table class="w-full whitespace-no-wrap">
+            <table class="w-full whitespace-no-wrap" id="productTable">
                 <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                         <th class="px-4 py-3">Product ID</th>
                         <th class="px-4 py-3">Product Name</th>
                         <th class="px-4 py-3">Description</th>
                         <th class="px-4 py-3">Price</th>
-                        <th class="px-4 py-3">Stock</th>
+                        <th class="px-4 py-3">Stock_quantity</th>
                         <th class="px-4 py-3">Image</th>
                         <th class="px-4 py-3">Actions</th>
                     </tr>
@@ -40,10 +45,10 @@ $products = $productModel->getAllProducts($itemsPerPage, $offset);
                         <?php foreach ($products as $product): ?>
                             <tr class="text-gray-700 dark:text-gray-400">
                                 <td class="px-4 py-3 text-sm"><?php echo htmlspecialchars($product['product_id']); ?></td>
-                                <td class="px-4 py-3 text-sm"><?php echo htmlspecialchars($product['name']); ?></td>
+                                <td class="px-4 py-3 text-sm product-name"><?php echo htmlspecialchars($product['name']); ?></td>
                                 <td class="px-4 py-3 text-sm"><?php echo htmlspecialchars($product['description'] ?? 'No description'); ?></td>
                                 <td class="px-4 py-3 text-sm">$<?php echo number_format($product['price'], 2); ?></td>
-                                <td class="px-4 py-3 text-sm"><?php echo htmlspecialchars($product['stock']); ?></td>
+                                <td class="px-4 py-3 text-sm"><?php echo htmlspecialchars($product['stock_quantity']); ?></td>
                                 <td class="px-4 py-3 text-sm">
                                     <?php if ($product['image']): ?>
                                         <img src="uploads/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" class="w-10 h-10 object-cover">
@@ -92,3 +97,19 @@ $products = $productModel->getAllProducts($itemsPerPage, $offset);
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const searchValue = this.value.trim().toLowerCase();
+        const rows = document.querySelectorAll('#productTable tbody tr');
+
+        rows.forEach(row => {
+            const productName = row.querySelector('.product-name').textContent.toLowerCase();
+            if (searchValue === '' || productName.includes(searchValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>

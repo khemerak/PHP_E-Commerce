@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'] ?? '';
     $description = $_POST['description'] ?? '';
     $price = $_POST['price'] ?? '';
-    $stock = $_POST['stock'] ?? '';
+    $stock_quantity = $_POST['stock_quantity'] ?? '';
     $image = $_FILES['image']['name'] ?? null;
 
     if ($productModel->checkProductExists($name)) {
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $target_file = $target_dir . basename($image);
                 move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
             }
-            $productModel->createProduct($name, $description, $price, $stock, $image);
+            $productModel->createProduct($name, $description, $price, $stock_quantity, $image);
             echo "<script>window.location.href = '?p=products';</script>";
             exit();
         } catch (Exception $e) {
@@ -56,8 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div><label class="block text-sm font-medium text-gray-700 dark:text-gray-400">Price</label>
                 <input type="number" step="0.01" name="price" required class="w-full px-4 py-2 mt-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
             </div>
-            <div><label class="block text-sm font-medium text-gray-700 dark:text-gray-400">Stock</label>
-                <input type="number" name="stock" required class="w-full px-4 py-2 mt-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+            <div><label class="block text-sm font-medium text-gray-700 dark:text-gray-400">Stock_quantity</label>
+                <input type="number" name="stock_quantity" required class="w-full px-4 py-2 mt-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
             </div>
             <div><label class="block text-sm font-medium text-gray-700 dark:text-gray-400">Image (Optional)</label>
                 <input type="file" name="image" class="w-full px-4 py-2 mt-2 text-sm border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
